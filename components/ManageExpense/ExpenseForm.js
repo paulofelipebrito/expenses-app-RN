@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Alert } from 'react-native';
 import Input from './Input';
 import Button from '../UI/Button';
 import { getFormattedDate } from '../../util/date';
+import { GlobalStyles } from '../../constants/styles';
 
 function ExpenseForm({ submitButtonLabel, onCancel, onSubmit, defaultValues }) {
   const [inputs, setInputs] = useState({

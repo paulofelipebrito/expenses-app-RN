@@ -1,16 +1,17 @@
 import axios from 'axios';
-import './dotenv';
+import {API_BACKEND_URL} from "@env"
 
-const BACKEND_URL = process.env.BACKEND_URL;
+// const BACKEND_URL = process.env.BACKEND_URL;
 
 export async function storeExpense(expenseData) {
-  const response = await axios.post(BACKEND_URL + '/expenses.json', expenseData);
+  const response = await axios.post(API_BACKEND_URL + '/expenses.json', expenseData);
   const id = response.data.name;
   return id;
 }
 
 export async function fetchExpenses() {
-  const response = await axios.get(BACKEND_URL + '/expenses.json');
+  // console.log(`expenses`)
+  const response = await axios.get(`${API_BACKEND_URL}/expenses.json`);
 
   const expenses = [];
 
@@ -28,9 +29,9 @@ export async function fetchExpenses() {
 }
 
 export function updateExpense(id, expenseData) {
-  return axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData);
+  return axios.put(API_BACKEND_URL + `/expenses/${id}.json`, expenseData);
 }
 
 export function deleteExpense(id) {
-  return axios.delete(BACKEND_URL + `/expenses/${id}.json`);
+  return axios.delete(API_BACKEND_URL + `/expenses/${id}.json`);
 }
